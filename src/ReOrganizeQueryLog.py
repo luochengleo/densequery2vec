@@ -1,5 +1,5 @@
 
-SPLITS = 2048
+SPLITS = 1024
 cache = dict()
 for i in range(0,SPLITS,1):
     cache[i] = list()
@@ -16,18 +16,21 @@ for i in range(1,31,1):
     fin = open(filename)
     line  = fin.readline()
     while line != '':
-        count +=1
-        segs = line.strip().split('\t')
-        if len(segs)>2:
-            userid =segs[1]
-            hashmod = userid.__hash__()%SPLITS
-            cache[hashmod].append(line)
-        if count%10000000==0:
-            for idx in range(0,SPLITS,1):
-                fout = open('../data/querylogbyid/'+str(idx)+'.dat','a')
-                for item in cache[idx]:
-                    fout.write(item)
-                fout.close()
-                cache[idx] = list()
+        try:
+            count +=1
+            segs = line.strip().split('\t')
+            if len(segs)>2:
+                userid =segs[1]
+                hashmod = userid.__hash__()%SPLITS
+                cache[hashmod].append(line)
+            if count%100000000==0:
+                for idx in range(0,SPLITS,1):
+                    fout = open('../data/querylogbyid/'+str(idx)+'.dat','a')
+                    for item in cache[idx]:
+                        fout.write(item)
+                    fout.close()
+                    cache[idx] = list()
+        except:
+            print count,"EXCEPT"
         line  = fin.readline()
     
