@@ -11,7 +11,7 @@ for i in range(1,31,1):
         digit = '0'+str(i)
     else:
         digit = str(i)
-    filename = open('../data/querylog/201204'+digit+'.log')
+    filename = open('../data/querylog/201204'+digit+'.dat')
     print filename
     fin = open(filename)
     line  = fin.readline()
