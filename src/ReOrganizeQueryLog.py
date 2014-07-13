@@ -18,6 +18,8 @@ for i in range(1,31,1):
     while line != '':
         try:
             count +=1
+            if count %10000==0:
+                print count
             segs = line.strip().split('\t')
             if len(segs)>2:
                 userid =segs[1]
@@ -33,7 +35,6 @@ for i in range(1,31,1):
                     fout.write(item)
                 fout.close()
                 cache[idx] = list()
-        count +=1
         line  = fin.readline()
 
 print 'Final Clearing'
