@@ -21,7 +21,7 @@ for i in range(1,31,1):
         if len(segs)>2:
             userid =segs[1]
             hashmod = userid.__hash__()%SPLITS
-            cache[hashmod].append(l)
+            cache[hashmod].append(line)
         if count%10000000==0:
             for idx in range(0,SPLITS,1):
                 fout = open('../data/querylogbyid/'+str(idx)+'.dat','a')
