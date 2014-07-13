@@ -17,17 +17,16 @@ for i in range(1,31,1):
     line  = fin.readline()
     while line != '':
         try:
-            count +=1
-            if count %10000==0:
-                print count
+            
             segs = line.strip().split('\t')
             if len(segs)>2:
                 userid =segs[1]
                 hashmod = userid.__hash__()%SPLITS
                 cache[hashmod].append(line)
+                count +=1
         except:
             print count,"EXCEPT"
-        if count%10000000==0:
+        if count%50000000==0:
             print 'Writing ',count,filename
             for idx in range(0,SPLITS,1):
                 fout = open('../data/querylogbyid/'+str(idx)+'.dat','a')
