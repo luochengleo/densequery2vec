@@ -50,7 +50,7 @@ for idx in range(0,1024,1):
                 
                 type = segs[0].replace(' ','')
                 sessionid= segs[1].replace(' ','')
-                time = float(segs[2]).replace(' ','')
+                time = float(segs[2])
                 query = segs[3].replace(' ','')
     
                 currtime = time
@@ -69,7 +69,7 @@ for idx in range(0,1024,1):
             if segs[0] == 'C':
                 type = segs[0].replace(' ','')
                 sessionid= segs[1].replace(' ','')
-                time = float(segs[2]).replace(' ','')
+                time = float(segs[2])
                 query = segs[3].replace(' ','')
                 url=segs[4].replace(' ','')
     
