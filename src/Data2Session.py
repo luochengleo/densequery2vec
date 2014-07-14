@@ -26,10 +26,12 @@ for idx in range(0,1024,1):
         fin.close()
         
         def session2text(lt):
+            if len(lt)<2:
+                return ''
             text = ''
             for (q,s,t) in lt:
                 text = text+' '+q
-            return text
+            return text+'\n'
         
         fin = open('../data/querylogbyid/'+str(idx)+'.dat')
         fout = open('../data/sessiontext/'+str(idx)+'.txt','w')
@@ -88,7 +90,7 @@ for idx in range(0,1024,1):
                     if len(existData)>0:
                         existTime = existData[-1][2]
                         if currtime - existTime > 1800.0:
-                            fout.write(session2text(existData)+'\n')
+                            fout.write(session2text(existData))
                             dataOfSession[sessionid] = list()
                             dataOfSession[sessionid].append(bullet)
                         else:
@@ -101,6 +103,6 @@ for idx in range(0,1024,1):
         for k in dataOfSession.keys():
             existData = dataOfSession[k]
             if len(existData)>0:
-                fout.write(session2text(existData)+'\n')
+                fout.write(session2text(existData))
                 dataOfSession[k] = list()
         fout.close()
