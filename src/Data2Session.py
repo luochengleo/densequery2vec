@@ -4,7 +4,7 @@ import sys
 mod = int(sys.argv[1])
 
 for idx in range(0,1024,1):
-    if idx%24==mod:
+    if idx%40==mod:
         print idx
         fin = open('../data/querylogbyid/'+str(idx)+'.dat')
         line = fin.readline()
