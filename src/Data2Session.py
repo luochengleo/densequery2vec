@@ -3,7 +3,7 @@ import sys
 
 mod = int(sys.argv[1])
 
-for idx in range(0,1024,1):
+for idx in range(650,1024,1):
     if idx%40==mod:
         print idx
         fin = open('../data/querylogbyid/'+str(idx)+'.dat')
