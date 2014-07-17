@@ -15,14 +15,14 @@ def session2text(lt):
         return ''
 
 for idx in range(0,1024,1):
-    if idx%40==mod:
+    if idx%12==mod:
         print idx
         fin = open('../data/querylogbyid/'+str(idx)+'.dat')
-        line = fin.readline()
         count = 0
         currtime = 0
         dataOfSession = dict()
-        while line != '':
+        lines = fin.readlines()
+        for line in lines:
             count +=1
             if count %10000000==0:
                 print count
@@ -33,7 +33,6 @@ for idx in range(0,1024,1):
             except:
                 print line
             
-            line = fin.readline()
         fin.close()
         
 
@@ -43,7 +42,7 @@ for idx in range(0,1024,1):
         line = fin.readline()
         count = 0
         currtime = 0
-        while line != '':
+        for line in lines:
             count +=1
         #     if count %1000000==0:
         #         print float(count)/160000000.0,' clear'
@@ -102,8 +101,9 @@ for idx in range(0,1024,1):
                             dataOfSession[sessionid].append(bullet)
                     if len(existData) == 0:
                         dataOfSession[sessionid].append(bullet)
-            line = fin.readline()
         fin.close()
+        
+        
         
         for k in dataOfSession.keys():
             existData = dataOfSession[k]
