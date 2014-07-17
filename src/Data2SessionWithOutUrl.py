@@ -1,14 +1,18 @@
 import sys
-
-
 mod = int(sys.argv[1])
 def session2text(lt):
-    if len(lt)<2:
-        return ''
     text = ''
+    count = 0
     for (q,s,t) in lt:
-        text = text+' '+q
-    return text+'\n'
+        if 'C@' in q:
+            pass
+        if 'P@' in q:
+            text = text+' '+q
+            count +=1
+    if count >0:
+        return text+'\n'
+    else:
+        return ''
 
 for idx in range(0,1024,1):
     if idx%40==mod:
